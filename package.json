@@ -2,8 +2,8 @@
   "name": "dealerdeck-site",
   "private": true,
   "scripts": {
-    "dev": "serve . -l 3000",
-    "start": "serve . -l 3000"
+    "dev": "serve . -l tcp://127.0.0.1:4321",
+    "start": "serve . -l tcp://127.0.0.1:4321"
   },
   "devDependencies": {
     "serve": "^14.2.4"
