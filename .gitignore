@@ -4,3 +4,8 @@ node_modules/
 .env*.local
 .DS_Store
 Thumbs.db
+
+# iPhone screen recordings (HEVC); site uses transcoded *-web.mp4 only
+assets/screenrecording.mp4
+assets/screenrecording2.mp4
+assets/screenrecording3.mp4

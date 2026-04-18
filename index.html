@@ -4,10 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>DealerDeck — Real-time intelligence for dealership sales floors</title>
-<meta name="description" content="DealerDeck is an AI-powered operations platform that helps dealership sales reps work smarter in real time — inventory intelligence, customer logging, and deal tracking without replacing the rep-customer relationship." />
+<meta name="description" content="DealerDeck is real-time operations software for dealership sales reps — inventory intelligence, customer logging, and deal tracking at the speed of the floor. Private iOS pilot at BMW North Scottsdale (Penske); DriveCentric integration planned." />
 <meta property="og:title" content="DealerDeck — Intelligence for the sales floor" />
-<meta property="og:description" content="AI-powered dealership operations. Built by people who work the floor." />
+<meta property="og:description" content="Inventory intelligence and voice-first customer context in a private TestFlight pilot. Built for the rep beside the customer — not a CRM replacement." />
 <meta property="og:type" content="website" />
+
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/favicon.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -98,22 +101,13 @@
     padding: 16px 0;
   }
   .brand {
-    display: flex; align-items: center; gap: 10px;
+    display: flex; align-items: center;
     text-decoration: none; color: var(--text);
-    font-weight: 700;
-    font-size: 19px;
-    letter-spacing: -0.02em;
   }
-  .brand-mark {
-    width: 28px; height: 28px;
-    display: grid; place-items: center;
-    background: var(--blue);
-    color: white;
-    border-radius: 7px;
-    font-weight: 800;
-    font-size: 15px;
-    letter-spacing: -0.02em;
-    box-shadow: 0 0 20px var(--blue-glow);
+  .brand-logo {
+    height: 32px;
+    width: auto;
+    display: block;
   }
   .nav-links { display: flex; gap: 32px; align-items: center; }
   .nav-links a {
@@ -159,21 +153,67 @@
     filter: blur(60px);
   }
 
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+    gap: 40px 48px;
+    align-items: center;
+  }
+  @media (max-width: 960px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .hero-media {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  }
+  .hero-copy { min-width: 0; position: relative; z-index: 2; }
+  .hero-media {
+    position: relative;
+    z-index: 2;
+    justify-self: end;
+  }
+  @media (max-width: 960px) {
+    .hero-media { justify-self: center; }
+  }
+  .hero-video-shell {
+    background: #000;
+    border-radius: 36px;
+    padding: 6px;
+    border: 1.5px solid #2a2f38;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.02) inset,
+      0 30px 60px -20px rgba(0,0,0,0.8),
+      0 20px 40px -20px var(--blue-glow);
+    overflow: hidden;
+    aspect-ratio: 9 / 19.5;
+    max-height: min(78vh, 620px);
+  }
+  .hero-video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 30px;
+    object-fit: contain;
+    background: #000;
+  }
+
   .eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
     padding: 7px 14px 7px 12px;
-    background: var(--blue-soft);
-    border: 1px solid var(--blue-border);
+    background: var(--surface-2);
+    border: 1px solid var(--line-soft);
     border-radius: 100px;
     font-size: 13px;
     font-weight: 500;
-    color: var(--blue-hover);
+    color: var(--text-2);
     margin-bottom: 32px;
   }
   .eyebrow-dot {
     width: 7px; height: 7px; border-radius: 50%;
-    background: var(--blue);
-    box-shadow: 0 0 10px var(--blue);
+    background: var(--text-3);
     animation: pulse 2s ease-in-out infinite;
   }
   @keyframes pulse {
@@ -184,17 +224,11 @@
   h1.hero-title {
     font-weight: 800;
     font-size: clamp(42px, 7vw, 92px);
-    line-height: 1.02;
+    line-height: 1.1;
     letter-spacing: -0.035em;
     color: var(--text);
     margin-bottom: 28px;
     max-width: 980px;
-  }
-  h1.hero-title .accent {
-    background: linear-gradient(135deg, var(--blue) 0%, #5aaaff 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 
   .hero-sub {
@@ -267,7 +301,7 @@
   }
   .stat-num .suffix {
     font-size: 20px;
-    color: var(--blue);
+    color: var(--text-2);
     margin-left: 2px;
     font-weight: 600;
   }
@@ -289,24 +323,25 @@
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--blue);
+    color: var(--text-3);
     margin-bottom: 20px;
   }
   .section-label::before {
     content: '';
     width: 22px; height: 1px;
-    background: var(--blue);
+    background: var(--text-4);
   }
   h2 {
     font-weight: 800;
     font-size: clamp(32px, 4.5vw, 52px);
-    line-height: 1.05;
+    line-height: 1.14;
     letter-spacing: -0.03em;
     color: var(--text);
     margin-bottom: 20px;
     max-width: 800px;
   }
-  h2 .accent {
+  /* Gradient blue: headings only, accent wraps full words (no lone digits/symbols) */
+  h1 .accent, h2 .accent, h3 .accent, h4 .accent {
     background: linear-gradient(135deg, var(--blue) 0%, #5aaaff 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -353,12 +388,11 @@
   .quote {
     position: relative;
     font-size: clamp(20px, 2.2vw, 26px);
-    line-height: 1.4;
+    line-height: 1.48;
     color: var(--text);
     letter-spacing: -0.02em;
     font-weight: 500;
   }
-  .quote .accent { color: var(--blue); font-weight: 600; }
   .quote-attr {
     position: relative;
     margin-top: 28px;
@@ -390,7 +424,7 @@
     letter-spacing: 0.1em;
     color: var(--text-4);
   }
-  .compare-row.us .compare-label { color: var(--blue); }
+  .compare-row.us .compare-label { color: var(--text); }
   .compare-text {
     font-size: 15px;
     color: var(--text);
@@ -427,16 +461,16 @@
     width: 42px; height: 42px;
     margin-bottom: 24px;
     display: grid; place-items: center;
-    background: var(--blue-soft);
-    border: 1px solid var(--blue-border);
+    background: var(--surface-3);
+    border: 1px solid var(--line);
     border-radius: 10px;
-    color: var(--blue);
+    color: var(--text-2);
   }
   .feature-icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .feature h3 {
     font-weight: 700;
     font-size: 18px;
-    line-height: 1.3;
+    line-height: 1.4;
     letter-spacing: -0.02em;
     color: var(--text);
     margin-bottom: 10px;
@@ -514,6 +548,13 @@
     border-radius: 30px;
     object-fit: cover;
   }
+  .shot-phone video {
+    width: 100%; height: 100%;
+    display: block;
+    border-radius: 30px;
+    object-fit: contain;
+    background: #000;
+  }
   .shot-caption {
     margin-top: 22px;
     padding: 0 4px;
@@ -521,21 +562,21 @@
   .shot-tag {
     display: inline-block;
     padding: 4px 10px;
-    background: var(--blue-soft);
-    border: 1px solid var(--blue-border);
+    background: var(--surface-3);
+    border: 1px solid var(--line);
     border-radius: 6px;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--blue-hover);
+    color: var(--text-3);
     margin-bottom: 10px;
   }
   .shot-title {
     font-weight: 600;
     font-size: 15px;
     color: var(--text);
-    line-height: 1.35;
+    line-height: 1.42;
     letter-spacing: -0.015em;
   }
   .shot-desc {
@@ -578,9 +619,9 @@
   .step-num {
     display: inline-block;
     padding: 4px 10px;
-    background: var(--blue-soft);
-    border: 1px solid var(--blue-border);
-    color: var(--blue);
+    background: var(--surface-3);
+    border: 1px solid var(--line);
+    color: var(--text-3);
     font-family: var(--f-mono);
     font-size: 11px;
     font-weight: 600;
@@ -591,6 +632,7 @@
   .step h4 {
     font-weight: 700;
     font-size: 18px;
+    line-height: 1.38;
     letter-spacing: -0.02em;
     color: var(--text);
     margin-bottom: 10px;
@@ -687,7 +729,7 @@
     margin-bottom: 6px;
   }
   .case-metric-num .plus {
-    color: var(--blue);
+    color: var(--text-2);
     font-size: 0.7em;
   }
   .case-metric-label {
@@ -812,7 +854,7 @@
     text-decoration: none;
     transition: color 0.2s ease;
   }
-  .contact-value a:hover { color: var(--blue); }
+  .contact-value a:hover { color: var(--text); }
   .contact-value.mono { font-family: var(--f-mono); font-size: 15px; letter-spacing: 0; font-weight: 500; }
 
   /* ─────────────────────── FOOTER ─────────────────────── */
@@ -865,8 +907,7 @@
 <nav class="nav">
   <div class="container nav-inner">
     <a href="#" class="brand">
-      <div class="brand-mark">D</div>
-      DealerDeck
+      <img class="brand-logo" src="assets/LogoTransparentlogo.png" alt="DealerDeck" />
     </a>
     <div class="nav-links">
       <a href="#product">Product</a>
@@ -881,43 +922,56 @@
 <!-- ─────────────────────── HERO ─────────────────────── -->
 <header class="hero">
   <div class="container">
-    <div class="eyebrow">
-      <span class="eyebrow-dot"></span>
-      Now in pilot at BMW North Scottsdale
-    </div>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Private TestFlight pilot · BMW North Scottsdale (Penske)
+        </div>
 
-    <h1 class="hero-title reveal">
-      Intelligence for the <span class="accent">sales floor.</span>
-    </h1>
+        <h1 class="hero-title reveal">
+          Intelligence for the <span class="accent">sales floor</span>.
+        </h1>
 
-    <p class="hero-sub reveal">
-      DealerDeck is real-time operations software for dealership sales reps. Inventory you can actually search, customer context at your fingertips, and deal tracking that moves at the speed of the floor — <strong>without replacing the rep–customer relationship.</strong>
-    </p>
+        <p class="hero-sub reveal">
+          Real-time operations software for dealership sales reps. Inventory, customer context, and deal tracking at the speed of the floor — <strong>without replacing the rep–customer relationship.</strong>
+        </p>
 
-    <div class="hero-ctas reveal">
-      <a href="#contact" class="btn btn-primary">
-        Request dealership access
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="#product" class="btn btn-ghost">See the product</a>
+        <div class="hero-ctas reveal">
+          <a href="#contact" class="btn btn-primary">
+            Request dealership access
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#product" class="btn btn-ghost">See the product</a>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <div class="hero-video-shell">
+          <!-- H.264 (screenrecording-web.mp4): iPhone HEVC files show as black in most desktop browsers -->
+          <video class="hero-video" muted loop playsinline preload="auto" aria-label="DealerDeck app screen recording">
+            <source src="assets/screenrecording-web.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
     </div>
 
     <div class="hero-stats reveal">
       <div class="stat">
-        <div class="stat-num">5<span class="suffix">/5</span></div>
-        <div class="stat-label">Pilot reps actively using</div>
+        <div class="stat-num">5</div>
+        <div class="stat-label">Active pilot users</div>
       </div>
       <div class="stat">
         <div class="stat-num">&lt;2<span class="suffix">s</span></div>
-        <div class="stat-label">Voice-to-inventory lookup</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">0<span class="suffix"> steps</span></div>
-        <div class="stat-label">Required setup for reps</div>
+        <div class="stat-label">Voice-to-inventory response</div>
       </div>
       <div class="stat">
         <div class="stat-num">100<span class="suffix">%</span></div>
-        <div class="stat-label">BMW inventory coverage</div>
+        <div class="stat-label">Inventory coverage (pilot store)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Setup steps for reps</div>
       </div>
     </div>
   </div>
@@ -929,12 +983,12 @@
     <div class="positioning-grid">
       <div>
         <div class="section-label">Our position</div>
-        <h2 style="margin-bottom: 24px;">We don't replace reps. <span class="accent">We sharpen them.</span></h2>
-        <p class="section-sub">Most AI tools in automotive are built to talk <em>to</em> the customer. DealerDeck is built for the rep who's already standing next to them.</p>
+        <h2 style="margin-bottom: 24px;">We don't replace reps. <span class="accent">We sharpen them</span>.</h2>
+        <p class="section-sub">Most AI in automotive talks <em>to</em> the customer. DealerDeck is built for the rep who's already beside them.</p>
 
         <div class="quote-card" style="margin-top: 36px;">
           <p class="quote">
-            Other platforms use AI to talk <span class="accent">to</span> the customer. DealerDeck uses AI to help the rep talk to the customer <span class="accent">better.</span> One replaces the relationship. The other strengthens it.
+            Other platforms use AI to talk <em>to</em> the customer. DealerDeck uses AI to help the rep talk to the customer <em>better</em>. One replaces the relationship. The other strengthens it.
           </p>
           <div class="quote-attr">— DealerDeck product principle</div>
         </div>
@@ -943,7 +997,7 @@
       <div class="compare">
         <div class="compare-row them">
           <div class="compare-label">Them</div>
-          <div class="compare-text">AI chatbots that message leads on the rep's behalf, creating a layer between rep and customer.</div>
+          <div class="compare-text">AI chatbots that message leads on the rep's behalf, inserting a layer between rep and customer.</div>
         </div>
         <div class="compare-row us">
           <div class="compare-label">DealerDeck</div>
@@ -955,7 +1009,7 @@
         </div>
         <div class="compare-row us">
           <div class="compare-label">DealerDeck</div>
-          <div class="compare-text">Reps download the app, sign in, and have full inventory intelligence in under a minute.</div>
+          <div class="compare-text">Reps install from TestFlight, sign in, and have full inventory intelligence in under a minute.</div>
         </div>
         <div class="compare-row them">
           <div class="compare-label">Them</div>
@@ -963,7 +1017,7 @@
         </div>
         <div class="compare-row us">
           <div class="compare-label">DealerDeck</div>
-          <div class="compare-text">Every action is self-serving. Log a customer, get instant summaries and next steps back.</div>
+          <div class="compare-text">Every action is self-serving — log a customer, get instant summaries and next steps back.</div>
         </div>
       </div>
     </div>
@@ -976,7 +1030,7 @@
     <div class="features-head">
       <div class="section-label">Capabilities</div>
       <h2>Built around how reps <span class="accent">actually</span> work.</h2>
-      <p class="section-sub">Every feature answers a question reps ask on the floor ten times a day. No fluff, no dashboards to maintain, no data entry that isn't self-serving.</p>
+      <p class="section-sub">Every feature answers a question reps ask on the floor ten times a day.</p>
     </div>
 
     <div class="features-grid">
@@ -985,7 +1039,7 @@
           <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
         </div>
         <h3>Voice search that understands you</h3>
-        <p>Say "eggs 5 50 ease" and get every X5 xDrive50e on the lot. Gemini-powered query normalization handles accents, shorthand, and noise.</p>
+        <p>Say "eggs 5 50 ease" and get every X5 xDrive50e on the lot. Gemini-powered query normalization handles accents, shorthand, and background noise.</p>
       </div>
 
       <div class="feature">
@@ -993,7 +1047,7 @@
           <svg viewBox="0 0 24 24"><path d="M12 22s-8-7.6-8-13a8 8 0 1116 0c0 5.4-8 13-8 13z"/><circle cx="12" cy="9" r="3"/></svg>
         </div>
         <h3>Know where every vehicle is</h3>
-        <p>On lot, in transit, in service, sold pending. Status and physical location, tracked separately — the way actual dealerships operate.</p>
+        <p>On lot, in transit, in service, sold pending. Status and physical location are tracked separately — the way actual dealerships operate, not the way legacy software assumes.</p>
       </div>
 
       <div class="feature">
@@ -1001,15 +1055,15 @@
           <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
         </div>
         <h3>Deals that log themselves</h3>
-        <p>Log customers and progress with your voice. The app threads interactions, flags stakeholders, and surfaces what needs follow-up — so reps move on the right deal next.</p>
+        <p>Log customers and progress with your voice. The app threads interactions, generates summaries, and surfaces next steps — so reps always know what to move on next.</p>
       </div>
 
       <div class="feature">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
-        <h3>Smart name resolution</h3>
-        <p>"Dave" resolves to David. "Ed" to Edward. Disambiguation built in, so mentions of teammates always land on the right person — instantly.</p>
+        <h3>Name resolution that just works</h3>
+        <p>"Dave" resolves to David. "Ed" to Edward. Disambiguation is built in, so mentions of teammates always land on the right person instantly.</p>
       </div>
 
       <div class="feature">
@@ -1017,15 +1071,15 @@
           <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
         </div>
         <h3>Notifications only when relevant</h3>
-        <p>Alerts route to deal-linked users, last updaters, and mentioned staff only. Reps see what affects them — never everything.</p>
+        <p>Alerts route only to deal-linked users, last updaters, and mentioned staff. Reps see what affects them — never everything.</p>
       </div>
 
       <div class="feature">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3>Safe to show on the floor</h3>
-        <p>Built with dealer etiquette in mind. Everything reps see is safe to turn the phone around — no internal finance, no pricing games, no surprises.</p>
+        <h3>Safe to turn the phone around</h3>
+        <p>Every screen is safe to show a customer. No F&amp;I spoilers. No private notes exposed. Basic estimates only — F&amp;I stays with F&amp;I.</p>
       </div>
     </div>
   </div>
@@ -1037,34 +1091,12 @@
     <div class="showcase-head">
       <div>
         <div class="section-label">The app</div>
-        <h2>iOS-native. <span class="accent">Floor-ready.</span></h2>
+        <h2>iOS-native. <span class="accent">Floor-ready</span>.</h2>
       </div>
-      <p class="section-sub">Distributed privately via TestFlight to our BMW North Scottsdale pilot group. Full product available to partner dealerships.</p>
+      <p class="section-sub">iOS-native. Distributed privately through TestFlight to our BMW North Scottsdale pilot group.</p>
     </div>
 
     <div class="screenshot-grid">
-      <div class="shot">
-        <div class="shot-phone">
-          <img src="assets/01-ask.png" alt="DealerDeck home screen — voice query prompts" />
-        </div>
-        <div class="shot-caption">
-          <div class="shot-tag">Ask or update</div>
-          <div class="shot-title">Talk to DealerDeck like a person.</div>
-          <div class="shot-desc">Move cars, check status, log keys, find inventory — any question in plain speech.</div>
-        </div>
-      </div>
-
-      <div class="shot">
-        <div class="shot-phone">
-          <img src="assets/02-processing.png" alt="DealerDeck processing a voice command" />
-        </div>
-        <div class="shot-caption">
-          <div class="shot-tag">AI processing</div>
-          <div class="shot-title">Sub-two-second response time.</div>
-          <div class="shot-desc">Voice to normalized query to actionable result — all handled in the background.</div>
-        </div>
-      </div>
-
       <div class="shot">
         <div class="shot-phone">
           <img src="assets/03-chat.png" alt="DealerDeck chat interface showing inventory query" />
@@ -1078,12 +1110,38 @@
 
       <div class="shot">
         <div class="shot-phone">
-          <img src="assets/04-customer.png" alt="DealerDeck customer profile with AI-generated summary" />
+          <video class="shot-video" controls muted loop playsinline preload="auto" aria-label="DealerDeck — voice command processing screen recording">
+            <source src="assets/screenrecording-web.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="shot-caption">
+          <div class="shot-tag">AI processing</div>
+          <div class="shot-title">Sub-two-second response time.</div>
+          <div class="shot-desc">Voice to normalized query to actionable result — all handled in the background.</div>
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="shot-phone">
+          <img src="assets/01-ask.png" alt="DealerDeck home screen — voice query prompts" />
+        </div>
+        <div class="shot-caption">
+          <div class="shot-tag">Ask or update</div>
+          <div class="shot-title">Talk to DealerDeck like a person.</div>
+          <div class="shot-desc">Move cars, check status, log keys, find inventory — any question in plain speech.</div>
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="shot-phone">
+          <video class="shot-video" controls muted loop playsinline preload="auto" aria-label="DealerDeck customer profile screen recording">
+            <source src="assets/screenrecording3-web.mp4" type="video/mp4" />
+          </video>
         </div>
         <div class="shot-caption">
           <div class="shot-tag">Customer profile</div>
           <div class="shot-title">AI summaries and next steps.</div>
-          <div class="shot-desc">Vehicle interest, trade details, credit notes — threaded automatically from every touchpoint.</div>
+          <div class="shot-desc">Vehicle interest, trade notes, and credit context threaded from every touchpoint. One-tap <strong>Copy to CRM</strong>.</div>
         </div>
       </div>
     </div>
@@ -1095,30 +1153,30 @@
   <div class="container">
     <div class="how-head">
       <div class="section-label">How it works</div>
-      <h2>Four stages. <span class="accent">Zero</span> friction.</h2>
-      <p class="section-sub">DealerDeck is designed to earn trust before it asks for it. Every phase is opt-in and proves value before the next one begins.</p>
+      <h2>Four stages. <span class="accent">Earn trust</span> first.</h2>
+      <p class="section-sub">Each stage delivers value before we ask for more access.</p>
     </div>
 
     <div class="steps">
       <div class="step">
         <div class="step-num">STAGE 01</div>
-        <h4>Deploy</h4>
-        <p>Reps install from TestFlight, sign in, and have full inventory intelligence in under a minute. No IT, no integrations.</p>
+        <h4>Inventory intelligence</h4>
+        <p><strong>Active today.</strong> Reps install from TestFlight, sign in, and get full inventory search, vehicle tracking, and customer logging in under a minute. Zero integration required.</p>
       </div>
       <div class="step">
         <div class="step-num">STAGE 02</div>
-        <h4>Observe</h4>
-        <p>Read-only keylog sync reads dealership inventory sheets and reflects them live. Zero changes to existing workflow.</p>
+        <h4>Keylog sync</h4>
+        <p><strong>In progress.</strong> Read-only mirror of the dealership's Google Sheets keylog, polling every two minutes. Write-back follows once accuracy is proven.</p>
       </div>
       <div class="step">
         <div class="step-num">STAGE 03</div>
-        <h4>Integrate</h4>
-        <p>Once adoption is proven, DealerDeck connects to the CRM — DriveCentric — for two-way deal sync and customer context.</p>
+        <h4>DriveCentric CRM</h4>
+        <p><strong>Planned.</strong> Two-way sync with DriveCentric for customer data, deal notes, and AI summaries. Pending Partner Program approval.</p>
       </div>
       <div class="step">
         <div class="step-num">STAGE 04</div>
-        <h4>Scale</h4>
-        <p>Location and inventory systems migrate to DealerDeck as the source of truth. Expansion to additional rooftops.</p>
+        <h4>Source of truth</h4>
+        <p><strong>Planned.</strong> Location and inventory migrate to DealerDeck as the source of truth. Expansion to additional rooftops.</p>
       </div>
     </div>
   </div>
@@ -1130,9 +1188,9 @@
     <div class="case-grid">
       <div>
         <div class="section-label">Pilot partner</div>
-        <h2>Built on the floor of <span class="accent">BMW North Scottsdale.</span></h2>
-        <p class="section-sub" style="margin-bottom: 24px;">DealerDeck didn't come from a whiteboard. It was built by someone working the lot — day in, day out — observing exactly where time leaks out of the sales process. Every feature is a direct response to a real problem reps raised.</p>
-        <p class="section-sub">Validated in meetings with the General Manager and Sales Manager. Five active pilot users. Roadmap aligned with the dealership's transition to DriveCentric CRM.</p>
+        <h2>Built on the floor of <span class="accent">BMW North Scottsdale</span>.</h2>
+        <p class="section-sub" style="margin-bottom: 24px;">DealerDeck was built on the floor, not pitched from outside it. Five reps at BMW North Scottsdale (Penske Automotive Group) use it in production today.</p>
+        <p class="section-sub">The General Manager and Sales Manager validated the product in an April 2026 review. Integration planning is aligned with the store's DriveCentric transition.</p>
       </div>
 
       <div class="case-card">
@@ -1152,10 +1210,10 @@
           </div>
           <div>
             <div class="case-metric-num">0</div>
-            <div class="case-metric-label">Manual setup required</div>
+            <div class="case-metric-label">Setup steps required for reps</div>
           </div>
           <div>
-            <div class="case-metric-num">30<span class="plus">d</span></div>
+            <div class="case-metric-num">~30<span class="plus">d</span></div>
             <div class="case-metric-label">CRM integration window</div>
           </div>
         </div>
@@ -1174,7 +1232,7 @@
   <div class="container">
     <div class="stack-head">
       <div class="section-label">Built with</div>
-      <h2>Production stack. <span class="accent">Battle-tested</span> tools.</h2>
+      <h2>Production stack.</h2>
     </div>
 
     <div class="stack-logos">
@@ -1200,7 +1258,7 @@
       </div>
       <div class="stack-logo">
         <div class="stack-logo-name">DriveCentric</div>
-        <div class="stack-logo-role">CRM (integrating)</div>
+        <div class="stack-logo-role">CRM · planned</div>
       </div>
     </div>
   </div>
@@ -1213,10 +1271,10 @@
       <div>
         <div class="section-label">Get in touch</div>
         <h2>Ready to put DealerDeck on your floor?</h2>
-        <p class="contact-sub">We partner with a small number of dealerships at a time to make sure every rollout feels hand-built. Reach out and we'll schedule a walkthrough.</p>
+        <p class="contact-sub">Reach out and we'll schedule a walkthrough.</p>
 
         <div class="hero-ctas">
-          <a href="mailto:hello@dealerdeck.app" class="btn btn-primary">
+          <a href="mailto:contact@dealerdeckapp.com" class="btn btn-primary">
             Email us
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
@@ -1229,12 +1287,16 @@
           <div class="contact-value">DealerDeck LLC</div>
         </div>
         <div class="contact-row">
-          <div class="contact-label">Email</div>
-          <div class="contact-value"><a href="mailto:hello@dealerdeck.app">hello@dealerdeck.app</a></div>
+          <div class="contact-label">Contact</div>
+          <div class="contact-value"><a href="mailto:contact@dealerdeckapp.com">contact@dealerdeckapp.com</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-label">Support</div>
+          <div class="contact-value"><a href="mailto:support@dealerdeckapp.com">support@dealerdeckapp.com</a></div>
         </div>
         <div class="contact-row">
           <div class="contact-label">Phone</div>
-          <div class="contact-value mono"><a href="tel:+14805550100">+1 (480) 555-0100</a></div>
+          <div class="contact-value mono"><a href="tel:+12063216087">(206) 321-6087</a></div>
         </div>
         <div class="contact-row">
           <div class="contact-label">Location</div>
@@ -1257,7 +1319,8 @@
       <a href="#product">Product</a>
       <a href="#how">How it works</a>
       <a href="#contact">Contact</a>
-      <a href="mailto:hello@dealerdeck.app">hello@dealerdeck.app</a>
+      <a href="mailto:contact@dealerdeckapp.com">contact@dealerdeckapp.com</a>
+      <a href="mailto:support@dealerdeckapp.com">support@dealerdeckapp.com</a>
     </div>
   </div>
 </footer>
@@ -1272,6 +1335,37 @@
 
   document.querySelectorAll('.reveal, .feature, .shot, .step, .compare, .stack-logo, .case-card, .stat, .quote-card')
     .forEach(el => { el.classList.add('reveal'); io.observe(el); });
+
+  /** Autoplay from 3s (muted + loop satisfies browser policy); native controls still pause/play/unmute. */
+  const VIDEO_START_SEC = 3;
+  function startVideoAtOffset(video) {
+    video.muted = true;
+    if (!video.loop) video.loop = true;
+
+    function seekAndPlay() {
+      const d = video.duration;
+      if (!d || !isFinite(d)) return;
+      const t = Math.min(VIDEO_START_SEC, Math.max(0, d - 0.1));
+      let played = false;
+      const tryPlay = () => {
+        if (played) return;
+        played = true;
+        video.play().catch(() => {});
+      };
+      video.addEventListener('seeked', tryPlay, { once: true });
+      video.currentTime = t;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (!played && (video.readyState >= 2 || Math.abs(video.currentTime - t) < 0.15)) tryPlay();
+        });
+      });
+    }
+
+    if (video.readyState >= 1) seekAndPlay();
+    else video.addEventListener('loadedmetadata', seekAndPlay, { once: true });
+  }
+
+  document.querySelectorAll('.hero-video, .shot-video').forEach(startVideoAtOffset);
 </script>
 
 </body>
